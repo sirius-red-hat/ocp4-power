@@ -10,8 +10,14 @@ parameters:
 - description: Project/Namespace
   name: NS
   value: powervm-rmc
-- description: Service Account
+- description: Service Account Name
   name: SA
+  value: powervm-rmc
+- description: Security Context Constraint Name
+  name: SCC
+  value: powervm-rmc
+- description: DaemonSet Name
+  name: DS
   value: powervm-rmc
 
 objects:
@@ -31,7 +37,7 @@ objects:
   metadata:
     annotations:
       kubernetes.io/description: 'For use by powervm-rmc components.'
-    name: powervm-rmc
+    name: ${SCC}
   allowHostDirVolumePlugin: true
   allowHostIPC: true
   allowHostNetwork: true
@@ -70,7 +76,7 @@ objects:
 - apiVersion: apps/v1
   kind: DaemonSet
   metadata:
-    name: powervm-rmc
+    name: ${DS}
     namespace: ${NS}
   spec:
     selector:
