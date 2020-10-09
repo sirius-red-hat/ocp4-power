@@ -19,6 +19,9 @@ parameters:
 - description: DaemonSet Name
   name: DS
   value: powervm-rmc
+- description: Application Label
+  name: LABEL
+  value: powervm-rmc
 
 objects:
 - apiVersion: project.openshift.io/v1
@@ -81,12 +84,11 @@ objects:
   spec:
     selector:
       matchLabels:
-        app: powervm-rmc
+        app: ${LABEL}
     template:
       metadata:
-        creationTimestamp: null
         labels:
-          app: powervm-rmc
+          app: ${LABEL}
       spec:
         nodeSelector:
           kubernetes.io/arch: ppc64le
