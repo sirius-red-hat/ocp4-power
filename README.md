@@ -15,5 +15,6 @@ Template parameters that can be defined in `deploy.yaml` or added to the `oc pro
 2. SA - ServiceAccount name to create.
 3. SCC - SecurityContextConstraint name to create.
 4. DS - DaemonSet name to create.
+5. LABEL - Application label for DaemonSet.
 
 All parameters values default to `powervm-rmc` but can overridden if there are naming standards needed for compliance.
