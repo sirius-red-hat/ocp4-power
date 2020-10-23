@@ -93,6 +93,10 @@ objects:
         nodeSelector:
           kubernetes.io/arch: ppc64le
           node.openshift.io/os_id: rhcos
+        tolerations:
+          - key: node-role.kubernetes.io/master
+            operator: Exists
+            effect: NoSchedule
         restartPolicy: Always
         serviceAccountName: ${SA}
         hostNetwork: true
@@ -125,8 +129,4 @@ objects:
           - name: lib-modules
             hostPath:
               path: /lib/modules
-        tolerations:
-          - key: node-role.kubernetes.io/master
-            operator: Exists
-            effect: NoSchedule
 ...
